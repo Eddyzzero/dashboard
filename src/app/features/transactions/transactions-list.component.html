@@ -1,0 +1,107 @@
+<div class="space-y-4">
+    <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+            <button class="btn btn-sm" (click)="prevMonth()">&lt;</button>
+            <div class="font-medium">{{ month + 1 }} / {{ year }}</div>
+            <button class="btn btn-sm" (click)="nextMonth()">&gt;</button>
+        </div>
+
+        <div>
+            <a routerLink="/transactions/new" class="btn btn-primary btn-sm">Nouvelle transaction</a>
+        </div>
+    </div>
+
+    <div *ngIf="loading" class="text-center">Chargement...</div>
+    <div *ngIf="error" class="alert alert-error">{{ error }}</div>
+
+    <div class="card bg-base-100">
+        <ul class="menu menu-lg p-0 [&_li>*]:rounded-none">
+            <li *ngFor="let tx of transactions" class="border-b border-base-200 hover:bg-base-200 transition-colors">
+                <div class="flex items-center justify-between py-2 px-4">
+                    <!-- Partie gauche avec icône et infos -->
+                    <div class="flex items-center gap-4">
+                        <!-- Icône adaptative selon le type -->
+                        <div [ngClass]="tx.type === 'income' ? 'bg-success/10 text-success' : 'bg-error/10 text-error'"
+                            class="p-3 rounded-lg">
+                            <svg *ngIf="tx.type === 'income'" class="w-6 h-6" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                            </svg>
+                            <svg *ngIf="tx.type === 'expense'" class="w-6 h-6" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                            </svg>
+                        </div>
+                        <!-- Informations de la transaction -->
+                        <div>
+                            <div class="font-medium flex items-center gap-2">
+                                {{ tx.category }}
+                                <span class="badge badge-sm"
+                                    [ngClass]="tx.type === 'income' ? 'badge-success' : 'badge-error'">
+                                    {{ tx.type === 'income' ? 'Revenu' : 'Dépense' }}
+                                </span>
+                            </div>
+                            <div class="text-sm opacity-70">
+                                {{ formatDate(tx.date) }}
+                                <span *ngIf="tx.note" class="mx-2">•</span>
+                                <span *ngIf="tx.note" class="italic">{{ tx.note }}</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Partie droite avec montant et actions -->
+                    <div class="flex items-center gap-6">
+                        <!-- Montant -->
+                        <div [ngClass]="tx.type === 'income' ? 'text-success' : 'text-error'"
+                            class="text-xl font-semibold tabular-nums">
+                            {{ tx.type === 'income' ? '+' : '-' }}{{ tx.amount | number:'1.2-2' }} €
+                        </div>
+                        <!-- Actions -->
+                        <div class="dropdown dropdown-end">
+                            <button tabindex="0" class="btn btn-ghost btn-circle btn-sm">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+                                </svg>
+                            </button>
+                            <ul tabindex="0" class="dropdown-content menu menu-sm bg-base-200 rounded-box w-40 shadow">
+                                <li>
+                                    <a [routerLink]="['/transactions', tx.id]" class="text-base-content">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                        </svg>
+                                        Modifier
+                                    </a>
+                                </li>
+                                <li>
+                                    <button (click)="deleteTx(tx)" class="text-error">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                        </svg>
+                                        Supprimer
+                                    </button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Message si aucune transaction -->
+    <div *ngIf="transactions?.length === 0" class="text-center py-8 text-base-content/70">
+        <div class="mb-4">
+            <svg class="w-16 h-16 mx-auto opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                    d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+        </div>
+        <p class="text-lg font-medium">Aucune transaction pour ce mois</p>
+        <p class="mt-2">Commencez à enregistrer vos transactions pour suivre vos finances</p>
+    </div>
+</div>

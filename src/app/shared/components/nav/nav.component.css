@@ -1,0 +1,105 @@
+/* Styles pour les liens actifs */
+.active {
+    background-color: hsl(var(--p) / 0.1);
+    color: hsl(var(--p));
+    font-weight: 600;
+}
+
+/* Sidebar fixe */
+.sidebar {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Header fixe */
+.header {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* Dropdown utilisateur */
+.dropdown-content {
+    border: 1px solid hsl(var(--b2));
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+/* Animations pour le drawer mobile */
+.drawer-side {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animation du menu burger */
+.btn-ghost:hover {
+    background-color: hsl(var(--b2) / 0.5);
+    transform: scale(1.05);
+    transition: all 0.2s ease;
+}
+
+/* Animation des liens de navigation */
+.menu a {
+    transition: all 0.2s ease;
+}
+
+.menu a:hover {
+    transform: translateX(2px);
+}
+
+/* Animation du toggle thème */
+.btn-ghost svg {
+    transition: all 0.3s ease;
+}
+
+.btn-ghost:hover svg {
+    transform: rotate(15deg);
+}
+
+/* Styles pour le logo */
+.logo-container {
+    transition: all 0.2s ease;
+}
+
+.logo-container:hover {
+    transform: scale(1.05);
+}
+
+/* Animation de l'overlay du drawer */
+.drawer-overlay {
+    transition: opacity 0.3s ease;
+}
+
+/* Animation du contenu du drawer */
+.drawer-content {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Styles pour les icônes SVG */
+svg {
+    transition: all 0.2s ease;
+}
+
+/* Animation des boutons */
+.btn {
+    transition: all 0.2s ease;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px hsl(var(--b1) / 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .navbar-start .font-bold {
+        display: none;
+    }
+}
+
+/* Animation de fermeture du drawer */
+.drawer-closing .drawer-content {
+    transform: translateX(-100%);
+}
+
+.drawer-closing .drawer-overlay {
+    opacity: 0;
+}

@@ -1,0 +1,57 @@
+.notifications-container {
+    position: fixed;
+    top: 5rem;
+    right: 1rem;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 24rem;
+}
+
+.alert {
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 6px 18px rgba(2, 6, 23, 0.08);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: var(--cam-bg, #fff);
+}
+
+.alert .icon {
+    flex-shrink: 0;
+}
+
+.alert .content {
+    flex: 1;
+}
+
+.alert .message {
+    font-weight: 600;
+}
+
+.alert .detail {
+    margin-top: 0.25rem;
+}
+
+/* Using theme tokens if available */
+.success {
+    background-color: hsl(var(--su));
+    color: hsl(var(--suc));
+}
+
+.error {
+    background-color: hsl(var(--er));
+    color: hsl(var(--erc));
+}
+
+.warning {
+    background-color: hsl(var(--wa));
+    color: hsl(var(--wac));
+}
+
+.info {
+    background-color: hsl(var(--in));
+    color: hsl(var(--inc));
+}

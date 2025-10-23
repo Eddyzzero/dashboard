@@ -1,0 +1,31 @@
+<div class="notifications-container" *ngIf="notifications.length > 0">
+    <div *ngFor="let notification of notifications" class="alert" [ngClass]="notification.type">
+        <div class="flex items-start gap-3">
+            <div class="icon">
+                <svg *ngIf="notification.type === 'success'" class="w-5 h-5 text-success" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <svg *ngIf="notification.type === 'error'" class="w-5 h-5 text-error" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+                <svg *ngIf="notification.type === 'warning'" class="w-5 h-5 text-warning" fill="none"
+                    stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z" />
+                </svg>
+                <svg *ngIf="notification.type === 'info'" class="w-5 h-5 text-info" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M13 16h-1v-4h-1m1-4h.01M12 20a8 8 0 100-16 8 8 0 000 16z" />
+                </svg>
+            </div>
+
+            <div class="content">
+                <div class="message">{{ notification.message }}</div>
+                <div *ngIf="notification.detail" class="detail text-sm opacity-70">{{ notification.detail }}</div>
+            </div>
+        </div>
+    </div>
+</div>

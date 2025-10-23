@@ -1,0 +1,241 @@
+<!-- Page d'inscription moderne -->
+<div class="min-h-screen bg-base-200 flex items-center justify-center p-4 relative">
+    <!-- Toggle thème en haut à droite -->
+    <div class="absolute top-4 right-4 z-10">
+        <button class="btn btn-ghost btn-circle" (click)="theme.toggleTheme()"
+            [attr.aria-label]="theme.isDarkMode() ? 'Passer au mode clair' : 'Passer au mode sombre'"
+            title="Changer le thème">
+            <svg *ngIf="theme.isDarkMode()" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path
+                    d="M12 2.25a.75.75 0 01.75.75v2.25a.75.75 0 01-1.5 0V3a.75.75 0 01.75-.75zM7.5 12a4.5 4.5 0 119 0 4.5 4.5 0 01-9 0zM18.894 6.166a.75.75 0 00-1.06-1.06l-1.591 1.59a.75.75 0 101.06 1.061l1.591-1.59zM21.75 12a.75.75 0 01-.75.75h-2.25a.75.75 0 010-1.5H21a.75.75 0 01.75.75zM17.834 18.894a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 10-1.061 1.06l1.59 1.591zM12 18a.75.75 0 01.75.75V21a.75.75 0 01-1.5 0v-2.25A.75.75 0 0112 18zM7.758 17.303a.75.75 0 00-1.061-1.06l-1.591 1.59a.75.75 0 001.06 1.061l1.591-1.59zM6 12a.75.75 0 01-.75.75H3a.75.75 0 010-1.5h2.25A.75.75 0 016 12zM6.697 7.757a.75.75 0 001.06-1.06l-1.59-1.591a.75.75 0 00-1.061 1.06l1.59 1.591z" />
+            </svg>
+            <svg *ngIf="!theme.isDarkMode()" class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd"
+                    d="M9.528 1.718a.75.75 0 01.162.819A8.97 8.97 0 009 6a9 9 0 009 9 8.97 8.97 0 003.463-.69.75.75 0 01.981.98 10.503 10.503 0 01-9.694 6.46c-5.799 0-10.5-4.701-10.5-10.5 0-4.368 2.667-8.112 6.46-9.694a.75.75 0 01.818.162z"
+                    clip-rule="evenodd" />
+            </svg>
+        </button>
+    </div>
+    <div class="w-full max-w-7xl mx-auto">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+
+            <!-- Section de présentation (gauche) -->
+            <div class="text-center lg:text-left space-y-8">
+                <!-- Logo et titre -->
+                <div class="space-y-4">
+                    <div class="flex items-center justify-center lg:justify-start gap-3">
+                        <div class="w-12 h-12 bg-primary rounded-xl flex items-center justify-center shadow-lg">
+                            <svg class="w-7 h-7 text-primary-content" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                            </svg>
+                        </div>
+                        <h1 class="text-4xl lg:text-5xl font-bold text-base-content">
+                            Dashboard Finances
+                        </h1>
+                    </div>
+                    <p class="text-lg text-base-content/70 max-w-md mx-auto lg:mx-0">
+                        Commencez à gérer vos finances dès aujourd'hui. Créez votre compte et
+                        rejoignez notre communauté d'utilisateurs pour une meilleure gestion financière.
+                    </p>
+                </div>
+
+                <!-- Statistiques -->
+                <div class="flex flex-col sm:flex-row gap-4 max-w-sm mx-auto lg:mx-0">
+                    <div
+                        class="stat bg-base-100 rounded-2xl shadow-sm border border-base-300 hover:shadow-lg hover:border-primary transition-all duration-200 hover:bg-base-200 hover:text-base-content hover:text-primary p-8 backdrop-blur-sm bg-base-100/95 hover:backdrop-blur-lg">
+                        <div class="stat-figure text-primary hover:text-primary-focus transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 1H5C3.89 1 3 1.89 3 3V21C3 22.11 3.89 23 5 23H19C20.11 23 21 22.11 21 21V9M19 9H14V4H5V21H19V9Z" />
+                            </svg>
+                        </div>
+                        <div class="stat-title text-xs">Économies</div>
+                        <div class="stat-value text-2xl text-primary">25%</div>
+                    </div>
+                    <div
+                        class="stat bg-base-100 rounded-2xl shadow-sm border border-base-300 hover:shadow-lg hover:border-primary transition-all duration-200 hover:bg-base-200 hover:text-base-content hover:text-primary p-8 backdrop-blur-sm bg-base-100/95 hover:backdrop-blur-lg">
+                        <div class="stat-figure text-secondary hover:text-secondary-focus transition-colors">
+                            <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                        </div>
+                        <div class="stat-title text-xs">Satisfaction</div>
+                        <div class="stat-value text-2xl text-secondary">98%</div>
+                    </div>
+                </div>
+
+                <!-- Avantages -->
+                <div class="space-y-4 text-left max-w-md mx-auto lg:mx-0">
+                    <h3 class="text-xl font-semibold text-base-content mb-4">Pourquoi nous choisir ?</h3>
+                    <div class="space-y-3">
+                        <div class="flex items-start gap-3 text-base-content/80">
+                            <div class="w-6 h-6 bg-primary/10 rounded-full flex items-center justify-center mt-0.5">
+                                <svg class="w-3 h-3 text-primary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Interface intuitive</p>
+                                <p class="text-sm text-base-content/60">Facile à utiliser, même pour les débutants</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 text-base-content/80">
+                            <div class="w-6 h-6 bg-secondary/10 rounded-full flex items-center justify-center mt-0.5">
+                                <svg class="w-3 h-3 text-secondary" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Sécurité garantie</p>
+                                <p class="text-sm text-base-content/60">Vos données sont protégées et chiffrées</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 text-base-content/80">
+                            <div class="w-6 h-6 bg-accent/10 rounded-full flex items-center justify-center mt-0.5">
+                                <svg class="w-3 h-3 text-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <p class="font-medium">Gratuit pour toujours</p>
+                                <p class="text-sm text-base-content/60">Aucun frais caché, fonctionnalités complètes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulaire d'inscription (droite) -->
+            <div
+                class="w-full max-w-md mx-auto rounded-xl shadow-2xl border border-base-300 hover:shadow-lg hover:border-primary transition-all duration-200 hover:bg-base-200 hover:text-base-content hover:text-primary p-8 backdrop-blur-sm bg-base-100/95 hover:backdrop-blur-lg">
+                <div>
+                    <div class="card-body p-8">
+                        <!-- En-tête -->
+                        <div class="text-center mb-8">
+                            <h2 class="text-3xl font-bold text-base-content mb-2">
+                                Créer un compte
+                            </h2>
+                            <p class="text-base-content/60">
+                                Rejoignez notre communauté
+                            </p>
+                        </div>
+
+                        <!-- Alerte d'erreur -->
+                        <div *ngIf="error" class="alert alert-error mb-6">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z" />
+                            </svg>
+                            <span class="text-sm">{{ error }}</span>
+                        </div>
+
+                        <!-- Formulaire -->
+                        <form (ngSubmit)="submit()" class="space-y-6 mb-6">
+                            <!-- Email -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Adresse email</span>
+                                </label>
+                                <input type="email" [(ngModel)]="email" name="email" placeholder="votre@email.com"
+                                    class="input input-bordered w-full focus:input-primary transition-colors rounded-xl px-4 py-2 text-lg font-medium border-2 border-base-300 hover:border-primary hover:shadow-lg hover:bg-base-200 hover:text-base-content hover:text-primary"
+                                    [class.input-error]="error" required />
+                            </div>
+
+                            <!-- Mot de passe -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Mot de passe</span>
+                                </label>
+                                <input type="password" [(ngModel)]="password" name="password"
+                                    placeholder="Votre mot de passe"
+                                    class="input input-bordered w-full focus:input-primary transition-colors rounded-xl px-4 py-2 text-lg font-medium border-2 border-base-300 hover:border-primary hover:shadow-lg hover:bg-base-200 hover:text-base-content hover:text-primary"
+                                    [class.input-error]="error" required />
+                            </div>
+
+                            <!-- Confirmation du mot de passe -->
+                            <div class="form-control">
+                                <label class="label">
+                                    <span class="label-text font-medium">Confirmez le mot de passe</span>
+                                </label>
+                                <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword"
+                                    placeholder="Confirmez votre mot de passe"
+                                    class="input input-bordered w-full focus:input-primary transition-colors rounded-xl px-4 py-2 text-lg font-medium border-2 border-base-300 hover:border-primary hover:shadow-lg hover:bg-base-200 hover:text-base-content hover:text-primary"
+                                    [class.input-error]="error" required />
+                            </div>
+
+                            <!-- Conditions d'utilisation -->
+                            <div class="form-control">
+                                <label class="label cursor-pointer justify-start gap-3">
+                                    <input type="checkbox" class="checkbox checkbox-primary" required />
+                                    <span class="label-text text-sm text-base-content/70">
+                                        J'accepte les
+                                        <a href="#" class="link link-primary">conditions d'utilisation</a>
+                                        et la
+                                        <a href="#" class="link link-primary">politique de confidentialité</a>
+                                    </span>
+                                </label>
+                            </div>
+
+                            <!-- Divider -->
+                            <div class="divider text-base-content/40 flex items-center justify-center">
+                                <span class="text-lg font-medium bg-base-100 px-4">ou</span>
+                            </div>
+
+                            <!-- Bouton Google -->
+                            <div class="flex items-center justify-center">
+                                <button (click)="signInWithGoogle()"
+                                    class="btn btn-outline w-full gap-3 text-lg px-4 py-2 font-medium border-2 border-base-300 mb-6 hover:btn-primary transition-all duration-200 rounded-xl flex items-center justify-center">
+                                    <svg class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path fill="#4285F4"
+                                            d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
+                                        <path fill="#34A853"
+                                            d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
+                                        <path fill="#FBBC05"
+                                            d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
+                                        <path fill="#EA4335"
+                                            d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
+                                    </svg>
+                                    <span class="text-lg font-medium">Continuer avec Google</span>
+                                </button>
+                            </div>
+
+                            <!-- Bouton d'inscription -->
+                            <button type="submit"
+                                class="btn btn-primary w-full text-lg font-medium rounded-xl px-4 py-2 hover:btn-primary-focus transition-all duration-200 flex items-center justify-center gap-3 border-2 border-base-300 hover:border-primary hover:shadow-lg"
+                                [disabled]="loading">
+                                <span *ngIf="loading" class="loading loading-spinner loading-sm"></span>
+                                {{ loading ? 'Création...' : 'Créer un compte' }}
+                            </button>
+                        </form>
+
+                        <!-- Lien vers connexion -->
+                        <div class="text-center mt-6">
+                            <p class="text-sm text-base-content/60">
+                                Déjà un compte ?
+                                <a routerLink="/auth/login"
+                                    class="link link-primary font-medium hover:link-hover transition-colors">
+                                    Se connecter
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal d'erreur -->
+    <dialog id="error_modal" class="modal modal-bottom sm:modal-middle" [class.modal-open]="showErrorModal">
+        <div class="modal-box">
+            <h3 class="font-bold text-lg">Erreur de création de compte</h3>
+            <p class="py-4">{{ modalError }}</p>
+            <div class="modal-action">
+                <button class="btn" (click)="closeErrorModal()">Fermer</button>
+            </div>
+        </div>
+        <form method="dialog" class="modal-backdrop">
+            <button (click)="closeErrorModal()">Fermer</button>
+        </form>
+    </dialog>
+</div>

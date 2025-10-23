@@ -1,3 +1,56 @@
+# FinTrack — Gestion de finances personnelles (Angular)
+
+Stack: Angular + TailwindCSS + DaisyUI + Firebase (Auth + Firestore) + GSAP + Chart.js
+
+Quickstart
+
+1. Install dependencies
+
+```bash
+npm install
+```
+
+2. Configure Firebase
+
+- Copy `.env.example` to `.env` or fill `src/environments/environment.ts` with your Firebase config.
+- Deploy rules by using Firebase CLI or use emulators for local development.
+
+3. Tailwind setup
+
+- Ensure `tailwindcss` and `daisyui` are installed. If not, run:
+
+```bash
+npm install -D tailwindcss postcss autoprefixer daisyui
+npx tailwindcss init
+```
+
+- The project contains `tailwind.config.js` and `src/styles/theme.css` — ensure `angular.json` includes `src/styles/theme.css`.
+
+4. Run the app
+
+```bash
+npm run start
+```
+
+Notes
+
+- Replace demo collection paths (`demo_transactions`, `demo_categories`) with `users/{uid}/transactions` for real users.
+- Services use Firebase modular SDK (v9+). Install Firebase:
+
+```bash
+npm install firebase
+```
+
+- Install GSAP and Chart.js:
+
+```bash
+npm install gsap chart.js
+```
+
+Security
+
+- See `firestore.rules` for example rules that validate ownership and transaction data.
+
 # DashboardFinances
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.1.

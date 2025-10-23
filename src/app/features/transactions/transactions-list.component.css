@@ -1,0 +1,64 @@
+.month-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+
+.transactions-list {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.transaction-item {
+    display: grid;
+    grid-template-columns: auto 1fr auto auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.75rem;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.transaction-item:hover {
+    background-color: #f9fafb;
+}
+
+.amount {
+    font-weight: 600;
+}
+
+.amount.expense {
+    color: #dc2626;
+}
+
+.amount.income {
+    color: #059669;
+}
+
+.category {
+    color: #4b5563;
+}
+
+.date {
+    color: #6b7280;
+    font-size: 0.875rem;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.error-message {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.loading-spinner {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+}

@@ -1,0 +1,19 @@
+.link-primary {
+    @apply text-primary hover:text-primary-focus transition-colors;
+}
+
+.btn-google {
+    @apply bg-white text-gray-700 hover:bg-gray-100 border border-gray-300;
+
+    &:hover {
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.12);
+    }
+}
+
+.gradient-text {
+    @apply bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent;
+}
+
+.card {
+    @apply backdrop-blur-sm bg-base-100/95;
+}

@@ -1,0 +1,137 @@
+<div class="max-w-2xl mx-auto p-6">
+    <!-- En-tête -->
+    <div class="text-center mb-8">
+        <h2 class="text-2xl font-bold">{{ editingId ? 'Modifier la transaction' : 'Nouvelle transaction' }}</h2>
+        <p class="text-base-content/70 mt-2">Enregistrez les détails de votre transaction</p>
+    </div>
+
+    <!-- Alerte d'erreur -->
+    <div *ngIf="error" class="alert alert-error mb-6">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+        <span>{{ error }}</span>
+    </div>
+
+    <!-- Formulaire -->
+    <form class="card bg-base-100 shadow-lg">
+        <div class="card-body space-y-6">
+            <!-- Type de transaction -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-medium">Type de transaction</span>
+                </label>
+                <div class="btn-group w-full">
+                    <button type="button" [class.btn-active]="model.type === 'expense'" class="btn flex-1"
+                        (click)="model.type = 'expense'">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                        </svg>
+                        Dépense
+                    </button>
+                    <button type="button" [class.btn-active]="model.type === 'income'" class="btn flex-1"
+                        (click)="model.type = 'income'">
+                        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 10l7-7m0 0l7 7m-7-7v18" />
+                        </svg>
+                        Revenu
+                    </button>
+                </div>
+            </div>
+
+            <!-- Montant -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-medium">Montant</span>
+                </label>
+                <label class="input-group">
+                    <input type="number" [(ngModel)]="model.amount" name="amount"
+                        class="input input-bordered w-full text-lg font-medium" min="0.01" step="0.01"
+                        placeholder="0.00" required />
+                    <span class="bg-base-200 px-4 font-medium">€</span>
+                </label>
+            </div>
+
+            <!-- Date -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-medium">Date</span>
+                </label>
+                <input type="date" [(ngModel)]="model.date" name="date" class="input input-bordered w-full" required />
+            </div>
+
+            <!-- Catégorie -->
+            <label class="form-control w-full">
+                <div class="label">
+                    <span class="label-text font-medium">Catégorie</span>
+                </div>
+                <div class="select select-bordered w-full">
+                    <select [(ngModel)]="model.category" name="category" required class="w-full">
+                        <optgroup *ngIf="model.type === 'expense'" label="Dépenses">
+                            <option value="Alimentation">🍎 Alimentation</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Logement">🏠 Logement</option>
+                            <option value="Santé">⚕️ Santé</option>
+                            <option value="Loisirs">🎮 Loisirs</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Factures">📄 Factures</option>
+                            <option value="Education">📚 Education</option>
+                            <option value="Voyage">✈️ Voyage</option>
+                            <option value="Autre">📌 Autre</option>
+                        </optgroup>
+                        <optgroup *ngIf="model.type === 'income'" label="Revenus">
+                            <option value="Salaire">💼 Salaire</option>
+                            <option value="Freelance">💻 Freelance</option>
+                            <option value="Investissements">📈 Investissements</option>
+                            <option value="Remboursement">💸 Remboursement</option>
+                            <option value="Cadeaux">🎁 Cadeaux</option>
+                            <option value="Autre">📌 Autre</option>
+                        </optgroup>
+                    </select>
+                </div>
+                <div class="label">
+                    <span class="label-text-alt">Sélectionnez la catégorie appropriée</span>
+                </div>
+            </label>
+
+            <!-- Note -->
+            <fieldset class="form-control border-2 border-base-200 rounded-lg p-4">
+                <legend class="text-sm font-medium px-2 mx-2">Note détaillée</legend>
+                <textarea [(ngModel)]="model.note" name="note" class="textarea textarea-bordered h-24 w-full mt-2"
+                    placeholder="Ajoutez des détails sur cette transaction..."></textarea>
+                <div class="label justify-end">
+                    <span class="label-text-alt opacity-60">Optionnel</span>
+                </div>
+            </fieldset>
+
+            <!-- Méthode de paiement -->
+            <div class="form-control">
+                <label class="label">
+                    <span class="label-text font-medium">Méthode de paiement</span>
+                </label>
+                <select class="select select-bordered w-full" [(ngModel)]="model.paymentMethod" name="paymentMethod"
+                    required>
+                    <option value="card">💳 Carte bancaire</option>
+                    <option value="cash">💶 Espèces</option>
+                    <option value="transfer">🏦 Virement</option>
+                    <option value="check">📑 Chèque</option>
+                    <option value="other">📌 Autre</option>
+                </select>
+            </div>
+
+            <!-- Boutons d'action -->
+            <div class="flex gap-3 justify-end mt-6">
+                <button type="button" class="btn" (click)="cancel()">
+                    Annuler
+                </button>
+                <button type="submit" class="btn btn-primary" [disabled]="loading" (click)="submit()">
+                    <span *ngIf="loading" class="loading loading-spinner loading-sm mr-2"></span>
+                    {{ loading ? 'Enregistrement...' : 'Enregistrer' }}
+                </button>
+            </div>
+        </div>
+    </form>
+</div>
