@@ -11,7 +11,6 @@ import { AuthService } from './core/services/auth.service';
   imports: [RouterOutlet, NavComponent, NotificationsComponent, CommonModule],
   standalone: true,
   templateUrl: './app.html',
-  styleUrl: './app.css'
 })
 export class App implements OnInit {
   protected readonly title = signal('Dashboard_finances');

@@ -33,15 +33,15 @@
     <ng-template #authenticatedLayout>
         <div class="flex">
             <!-- Sidebar Navigation -->
-            <app-nav class="flex-shrink-0"></app-nav>
+            <app-nav class="shrink-0"></app-nav>
 
             <!-- Zone de contenu principal -->
-            <div class="flex-grow min-h-screen transition-all duration-300 lg:ml-72">
+            <div class="grow min-h-screen transition-all duration-300 lg:ml-72">
                 <!-- Topbar -->
                 <header class="sticky top-0 z-30 bg-base-100/80 backdrop-blur-md border-b border-base-200">
                     <div class="flex items-center justify-between px-4 lg:px-8 h-16">
                         <div class="flex items-center gap-4">
-                            <button class="btn btn-ghost btn-circle lg:hidden" (click)="toggleNav()"
+                            <button class="btn btn-circle lg:hidden" (click)="toggleNav()"
                                 aria-label="Toggle Navigation">
                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -63,6 +63,8 @@
                         </div>
                     </div>
                 </header>
+
+
 
                 <!-- Zone de contenu scrollable -->
                 <main class="p-4 lg:p-8">
