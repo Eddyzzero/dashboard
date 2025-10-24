@@ -22,7 +22,7 @@
                 <label class="label">
                     <span class="label-text font-medium">Type de transaction</span>
                 </label>
-                <div class="btn-group w-full">
+                <div class="flex justify-between  btn-group w-full">
                     <button type="button" [class.btn-active]="model.type === 'expense'" class="btn flex-1"
                         (click)="model.type = 'expense'">
                         <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -42,25 +42,28 @@
                 </div>
             </div>
 
-            <!-- Montant -->
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text font-medium">Montant</span>
-                </label>
-                <label class="input-group">
-                    <input type="number" [(ngModel)]="model.amount" name="amount"
-                        class="input input-bordered w-full text-lg font-medium" min="0.01" step="0.01"
-                        placeholder="0.00" required />
-                    <span class="bg-base-200 px-4 font-medium">€</span>
-                </label>
-            </div>
+            <div class="flex  justify-around gap-6">
+                <!-- Montant -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Montant</span>
+                    </label>
+                    <div class="flex items-center space-x-2">
+                        <input type="number" [(ngModel)]="model.amount" name="amount"
+                            class="input input-bordered w-36 text-lg font-medium" min="0.01" step="0.01"
+                            placeholder="0.00" required />
+                        <span class="px-4 py-2 bg-base-200 border border-base-200 rounded font-medium">€</span>
+                    </div>
+                </div>
 
-            <!-- Date -->
-            <div class="form-control">
-                <label class="label">
-                    <span class="label-text font-medium">Date</span>
-                </label>
-                <input type="date" [(ngModel)]="model.date" name="date" class="input input-bordered w-full" required />
+                <!-- Date -->
+                <div class="form-control">
+                    <label class="label">
+                        <span class="label-text font-medium">Date</span>
+                    </label>
+                    <input type="date" [(ngModel)]="model.date" name="date" class="input input-bordered w-full"
+                        required />
+                </div>
             </div>
 
             <!-- Catégorie -->
@@ -99,11 +102,10 @@
 
             <!-- Note -->
             <fieldset class="form-control border-2 border-base-200 rounded-lg p-4">
-                <legend class="text-sm font-medium px-2 mx-2">Note détaillée</legend>
+                <legend class="text-sm font-medium px-2 mx-2">Commentaire</legend>
                 <textarea [(ngModel)]="model.note" name="note" class="textarea textarea-bordered h-24 w-full mt-2"
                     placeholder="Ajoutez des détails sur cette transaction..."></textarea>
                 <div class="label justify-end">
-                    <span class="label-text-alt opacity-60">Optionnel</span>
                 </div>
             </fieldset>
 
