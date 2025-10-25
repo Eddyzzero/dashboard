@@ -6,10 +6,8 @@
     <!-- Header de la sidebar -->
     <div class="flex items-center justify-between p-6 border-b border-base-300">
         <div class="flex items-center gap-3">
-            <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center shadow-lg">
-                <svg class="w-6 h-6 text-primary-content" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-                </svg>
+            <div class="w-10 h-10 border border-base-300 rounded-xl flex items-center justify-center shadow-lg">
+                <img src="assets/feuille.png" alt="feuille" class="h-6 w-6">
             </div>
             <div>
                 <h1 class="text-xl font-bold text-base-content">Dashboard</h1>
@@ -55,12 +53,10 @@
                     <li>
                         <a routerLink="/settings" routerLinkActive="active" (click)="closeDrawer()"
                             class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 hover:bg-base-200 group">
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 text-base-content/60 group-hover:text-primary transition-colors"
-                                viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M19.43 12.98c.04-.32.07-.64.07-.98 0-.34-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.08-.73-1.69-.98l-.38-2.65C14.46 2.18 14.25 2 14 2h-4c-.25 0-.46.18-.49.42l-.38 2.65c-.61.25-1.17.59-1.69.98l-2.49-1c-.23-.09-.49 0-.61.22l-2 3.46c-.13.22-.07.49.12.64l2.11 1.65c-.04.32-.07.65-.07.98 0 .33.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.08.73 1.69.98l.38 2.65c.03.24.24.42.49.42h4c.25 0 .46-.18.49-.42l.38-2.65c.61-.25 1.17-.59 1.69-.98l2.49 1c.23.09.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z" />
-                            </svg>
+                            <span
+                                class="h-5 w-5 text-base-content/60 group-hover:text-primary transition-colors material-symbols-outlined">
+                                settings
+                            </span>
                             <span
                                 class="font-medium text-base-content group-hover:text-primary transition-colors">Paramètres</span>
                         </a>
@@ -68,7 +64,6 @@
                 </ul>
             </div>
 
-            <!-- Section SUPPORT -->
             <!-- Section SUPPORT -->
             <div class="mb-8">
                 <h3 class="text-xs font-semibold text-base-content/60 uppercase tracking-wider mb-4">SUPPORT</h3>
@@ -98,7 +93,8 @@
     <div class="p-4 border-t border-base-300">
         <div class="flex flex-col gap-3">
             <!-- Profil utilisateur -->
-            <div class="flex items-center gap-3 p-3 bg-base-200 rounded-xl" *ngIf="auth.currentUser$ | async as user">
+            <div class="flex items-center justify-center gap-3 p-3 bg-base-200 rounded-xl"
+                *ngIf="auth.currentUser$ | async as user">
                 <div class="w-10 h-10 rounded-full bg-primary text-primary-content grid place-items-center">
                     <span class="text-xl font-medium">{{ user.email?.[0]?.toUpperCase() || 'U' }}</span>
                 </div>
@@ -107,12 +103,12 @@
                     <p class="text-xs text-base-content/60">Connecté</p>
                 </div>
                 <!-- Bouton de déconnexion -->
-                <button class=" btn-xl text-error hover:bg-error/10" (click)="logout()" title="Déconnexion">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
-                    </svg>
+                <button
+                    class=" flex flex-col justify-center items-center p-2 btn-xl btn-ghost btn-error text-primary/50 hover:rounded-xl hover:p-2 hover:text-red-400"
+                    (click)="logout()" title="Déconnexion">
+                    <span class="material-symbols-outlined">
+                        exit_to_app
+                    </span>
                 </button>
             </div>
         </div>

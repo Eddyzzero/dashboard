@@ -5,6 +5,7 @@ import { NotificationsComponent } from './shared/components/notifications/notifi
 import { CommonModule } from '@angular/common';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './core/services/auth.service';
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +19,8 @@ export class App implements OnInit {
   auth = inject(AuthService);
 
   constructor(
-    private router: Router
+    private router: Router,
+    public theme: ThemeService
   ) { }
 
   ngOnInit() {

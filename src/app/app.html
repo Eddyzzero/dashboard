@@ -41,15 +41,32 @@
                             <h1 class="text-xl font-semibold">{{ getCurrentPageTitle() }}</h1>
                         </div>
 
-                        <!-- Actions rapides -->
-                        <div class="flex items-center gap-4">
-                            <button class="btn btn-ghost btn-circle" (click)="toggleQuickAdd()"
-                                aria-label="Ajouter une transaction">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 4v16m8-8H4" />
-                                </svg>
-                            </button>
+                        <div class="flex items-center gap-6">
+                            <!-- Actions rapides -->
+                            <div class="flex items-center gap-4">
+                                <div>
+                                    <a routerLink="/transactions/new" class="btn btn-primary btn-sm"
+                                        (click)="toggleQuickAdd()"> Ajouter nouvelle
+                                        transaction</a>
+                                </div>
+                            </div>
+
+                            <!-- Bouton de changement de thème -->
+                            <div class="">
+                                <button class="btn btn-ghost btn-circle" (click)="theme.toggleTheme()"
+                                    [attr.aria-label]="theme.isDarkMode() ? 'Passer au mode clair' : 'Passer au mode sombre'"
+                                    title="Changer le thème">
+                                    @if (theme.isDarkMode()) {
+                                    <span class="material-symbols-outlined">
+                                        light_mode
+                                    </span>
+                                    } @else {
+                                    <span class="material-symbols-outlined">
+                                        bedtime
+                                    </span>
+                                    }
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </header>
