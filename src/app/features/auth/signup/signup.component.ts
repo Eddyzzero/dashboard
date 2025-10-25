@@ -29,6 +29,18 @@ export class SignupComponent {
         public theme: ThemeService
     ) { }
 
+    isDark(): boolean {
+        return document.documentElement.getAttribute('data-theme') === 'dark';
+    }
+
+    toggleTheme(): void {
+        const html = document.documentElement;
+        const currentTheme = html.getAttribute('data-theme');
+        const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+        html.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+    }
+
     async signInWithGoogle() {
         try {
             this.loading = true;

@@ -4,13 +4,8 @@
         <div class="flex min-h-screen">
 
             <!-- Section droite : Formulaire d'authentification -->
-            <div class="w-full  flex items-center justify-center p-4 lg:p-12 bg-base-100">
+            <div class="w-full  flex items-center justify-center bg-base-100">
                 <div class="w-full">
-                    <div class="text-center mb-8 lg:hidden">
-                        <h1 class="text-2xl font-bold mb-2">Dashboard Finances</h1>
-                        <p class="text-base-content/70">Gérez vos finances personnelles</p>
-                    </div>
-
                     <!-- Zone du formulaire -->
                     <div class="card bg-base-200">
                         <div class="card-body">
@@ -18,12 +13,6 @@
                         </div>
                     </div>
 
-                    <!-- Liens utiles -->
-                    <div class="mt-6 text-center text-sm">
-                        <a href="#" class="link link-hover">Conditions d'utilisation</a>
-                        <span class="mx-2">·</span>
-                        <a href="#" class="link link-hover">Politique de confidentialité</a>
-                    </div>
                 </div>
             </div>
         </div>
@@ -31,12 +20,13 @@
 
     <!-- Template pour le layout authentifié -->
     <ng-template #authenticatedLayout>
-        <div class="flex">
+        <div class="flex ">
             <!-- Sidebar Navigation -->
             <app-nav class="shrink-0"></app-nav>
 
             <!-- Zone de contenu principal -->
-            <div class="grow min-h-screen transition-all duration-300 lg:ml-72">
+            <div class="grow min-h-screen transition-all duration-300">
+
                 <!-- Topbar -->
                 <header class="sticky top-0 z-30 bg-base-100/80 backdrop-blur-md border-b border-base-200">
                     <div class="flex items-center justify-between px-4 lg:px-8 h-16">

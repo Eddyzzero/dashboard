@@ -39,7 +39,7 @@ export class App implements OnInit {
   }
 
   getCurrentPageTitle(): string {
-    if (this.currentUrl.includes('dashboard')) return 'Tableau de bord';
+    if (this.currentUrl.includes('dashboard')) return 'Récapitulatif des finances';
     if (this.currentUrl.includes('transactions')) return 'Transactions';
     if (this.currentUrl.includes('categories')) return 'Catégories';
     if (this.currentUrl.includes('settings')) return 'Paramètres';

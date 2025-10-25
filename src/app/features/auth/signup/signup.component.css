@@ -202,11 +202,6 @@ svg {
     background: rgba(255, 255, 255, 0.95);
 }
 
-/* Mode sombre */
-[data-theme="dark"] .card {
-    background: rgba(31, 41, 55, 0.95);
-}
-
 /* Animation de pulsation pour les éléments importants */
 @keyframes pulse {
 

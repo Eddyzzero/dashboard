@@ -7,7 +7,6 @@ import { FirestoreService } from '../../core/services/firestore.service';
     standalone: true,
     imports: [CommonModule],
     templateUrl: './categories.component.html',
-    styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent implements OnInit {
     categories: any[] = [];
